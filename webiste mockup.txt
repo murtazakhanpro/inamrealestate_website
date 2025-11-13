@@ -1,0 +1,79 @@
+<!-- Save the sections below as three separate files in the same folder: \n1) index.html\n2) styles.css\n3) script.js\n\n---------------- index.html ----------------\n<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <title>Inam Real Estate — Corporate Profile</title>\n  <meta name="description" content="Inam Real Estate — Commercial real estate services in Karachi. Contact us for leasing, renting, and consultancy.">\n  <link rel="stylesheet" href="styles.css">\n  <link rel="preconnect" href="https://fonts.googleapis.com">\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">\n</head>\n<body>\n  <header class="site-header">\n    <div class="container header-inner">\n      <a class="logo" href="#">\n        <div class="logo-mark">IR</div>\n        <div class="logo-text">Inam Real Estate</div>\n      </a>\n      <nav class="nav" id="nav">\n        <a href="#home">Home</a>\n        <a href="#about">About</a>\n        <a href="#services">Services</a>\n        <a href="#contact">Contact</a>\n        <a class="btn primary" href="https://wa.me/923001234567" id="whatsapp-cta">WhatsApp</a>\n      </nav>\n      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>\n    </div>\n  </header>\n\n  <main>\n    <section class="hero" id="home">\n      <div class="container hero-inner">\n        <div class="hero-copy">\n          <h1>Connecting You to Real Estate Opportunities</h1>\n          <p class="lead">Commercial &amp; Corporate property services on Shahrah-e-Faisal, Karachi — trusted since 1998.</p>\n          <div class="hero-actions">\n            <a class="btn primary" href="https://wa.me/923001234567">Contact on WhatsApp</a>\n            <a class="btn ghost" href="#contact">Get In Touch</a>\n          </div>\n        </div>\n        <div class="hero-image" aria-hidden="true">\n          <img src="https://images.unsplash.com/photo-1560184897-6d4a3c1f0de1?auto=format&fit=crop&w=900&q=60" alt="Office building exterior">\n        </div>\n      </div>\n    </section>\n\n    <section class="why container">\n      <h2>Why Choose Inam Real Estate</h2>\n      <div class="cards">\n        <div class="card">\n          <h3>Local Market Expertise</h3>\n          <p>Deep knowledge of Karachi commercial corridors, especially Shahrah-e-Faisal.</p>\n        </div>\n        <div class="card">\n          <h3>Trusted by Businesses</h3>\n          <p>We serve retailers, franchises and corporate tenants with professional agreements.</p>\n        </div>\n        <div class="card">\n          <h3>Fast & Transparent</h3>\n          <p>Clear pricing and efficient deal execution to save your time and risk.</p>\n        </div>\n      </div>\n    </section>\n\n    <section class="about" id="about">\n      <div class="container">\n        <div class="about-grid">\n          <div class="about-content">\n            <h2>About Us</h2>\n            <p>Inam Real Estate is a commercial real estate agency located on Shahrah-e-Faisal, Karachi. We specialize in corporate leasing, renting, and sale/purchase advisory for offices, showrooms and commercial buildings.</p>\n            <p><strong>Mission:</strong> To provide honest, fast and professional real estate services.\n              <br><strong>Vision:</strong> To be the leading commercial property partner in Karachi.</p>\n            <a class="btn outline" href="#contact">Contact Our Team</a>\n          </div>\n          <div class="about-image" aria-hidden="true">\n            <img src="https://images.unsplash.com/photo-1505691723518-36a44b96d01b?auto=format&fit=crop&w=800&q=60" alt="Team meeting">\n          </div>\n        </div>\n      </div>\n    </section>\n\n    <section class="services" id="services">\n      <div class="container">\n        <h2>Our Services</h2>\n        <ul class="services-list">\n          <li>Renting Commercial Spaces — offices, showrooms, warehouses</li>\n          <li>Corporate Leasing — long-term lease solutions for businesses</li>\n          <li>Investment Consultancy — ROI-focused property advice</li>\n          <li>Sale & Purchase Advisory — negotiation and deal management</li>\n        </ul>\n      </div>\n    </section>\n\n    <section class="contact" id="contact">\n      <div class="container contact-grid">\n        <div class="contact-info">\n          <h2>Contact & Location</h2>\n          <p><strong>Office:</strong> Shahrah-e-Faisal, Karachi</p>\n          <p><strong>Phone:</strong> +92 300 1234567</p>\n          <p><strong>Email:</strong> info@inamrealestate.pk</p>\n          <p><strong>WhatsApp:</strong> <a href="https://wa.me/923001234567">+92 300 1234567</a></p>\n          <div class="contact-ctas">\n            <a class="btn primary" href="https://wa.me/923001234567">Message on WhatsApp</a>\n            <a class="btn outline" href="mailto:info@inamrealestate.pk">Email Us</a>\n          </div>\n        </div>\n        <div class="contact-form">\n          <form id="contactForm">\n            <label for="name">Name</label>\n            <input id="name" name="name" type="text" required>\n            <label for="email">Email</label>\n            <input id="email" name="email" type="email" required>\n            <label for="message">Message</label>\n            <textarea id="message" name="message" rows="5" required></textarea>\n            <button class="btn primary" type="submit">Send Message</button>\n            <p class="form-note" id="formNote" aria-live="polite"></p>\n          </form>\n        </div>\n      </div>\n      <div class="map container">\n        <!-- Replace the src with your Google Maps embed if you have the exact pin -->\n        <iframe title="Inam Real Estate Location" src="https://www.google.com/maps?q=Shahrah-e-Faisal%2C+Karachi&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>\n      </div>\n    </section>\n  </main>\n\n  <footer class="site-footer">\n    <div class="container footer-inner">\n      <div>© "Inam Real Estate" — All rights reserved.</div>\n      <div class="footer-links">\n        <a href="#privacy">Privacy</a>\n        <a href="#terms">Terms</a>\n      </div>\n    </div>\n  </footer>\n\n  <script src="script.js"></script>\n</body>\n</html>\n\n---------------- styles.css ----------------\n/* Basic reset and variables */\n:root{\n  --bg:#ffffff;\n  --text:#0b2545;\n  --muted:#556a82;\n  --accent:#b8860b; /* gold-ish */\n  --accent-dark:#8c6506;\n  --container:1100px;\n  --radius:12px;\n  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;\n}\n*{box-sizing:border-box}html,body{height:100%}body{margin:0;color:var(--text);background:var(--bg);line-height:1.5;font-size:16px}a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:block}button{font:inherit}label{display:block;margin-bottom:6px;font-weight:600}
+
+.container{max-width:var(--container);margin:0 auto;padding:20px}
+
+/* Header */
+.site-header{border-bottom:1px solid #e6eef6;background:#fff;position:sticky;top:0;z-index:60}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{width:44px;height:44px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.logo-text{font-weight:700}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{padding:8px 6px;border-radius:8px}
+.nav .btn{margin-left:6px}
+.nav-toggle{display:none;background:transparent;border:0;font-size:22px}
+
+/* Buttons */
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;border:1px solid transparent;cursor:pointer}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.ghost{background:transparent;border:1px solid #e1e7ef}
+.btn.outline{background:transparent;border:1px solid #d6e0ee}
+
+/* Hero */
+.hero{padding:48px 0}
+.hero-inner{display:flex;gap:30px;align-items:center}
+.hero-copy{flex:1}
+.hero-copy h1{font-size:34px;margin:0 0 12px}
+.lead{color:var(--muted);margin-bottom:18px}
+.hero-actions{display:flex;gap:12px}
+.hero-image{flex:1}
+.hero-image img{border-radius:12px;box-shadow:0 8px 30px rgba(11,37,69,0.06)}
+
+/* Why */
+.why{padding:30px 0}
+.cards{display:flex;gap:16px}
+.card{flex:1;padding:18px;border-radius:12px;border:1px solid #eef6fb;background:#fff}
+
+/* About */
+.about{padding:30px 0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+.about-image img{border-radius:12px}
+
+/* Services */
+.services{padding:30px 0}
+.services-list{list-style-type:disc;padding-left:20px;color:var(--muted)}
+
+/* Contact */
+.contact{padding:30px 0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.contact-info p{margin:6px 0}
+.contact-form form{display:flex;flex-direction:column;gap:10px}
+.contact-form input,.contact-form textarea{padding:10px;border-radius:8px;border:1px solid #dbe9fb}
+.form-note{color:var(--muted);font-size:14px}
+.map iframe{width:100%;height:320px;border:0;border-radius:8px;margin-top:18px}
+
+/* Footer */
+.site-footer{border-top:1px solid #eef6fb;background:#fff;padding:18px 0;margin-top:28px}
+.footer-inner{display:flex;justify-content:space-between;align-items:center}
+.footer-links a{margin-left:12px}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero-inner{flex-direction:column}
+  .cards{flex-direction:column}
+  .about-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .nav{position:absolute;top:68px;right:20px;background:#fff;padding:12px;border-radius:10px;box-shadow:0 10px 30px rgba(11,37,69,0.06);flex-direction:column;display:none}
+  .nav.show{display:flex}
+  .nav-toggle{display:block}
+}
+
+@media (max-width:480px){
+  .logo-text{display:none}
+  .hero-copy h1{font-size:26px}
+}
+
+/* Small helper */
+.visually-hidden{position:absolute;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px)}
+
+---------------- script.js ----------------\n// Mobile nav toggle\nconst navToggle = document.getElementById('navToggle');\nconst nav = document.getElementById('nav');\nnavToggle && navToggle.addEventListener('click', () => {\n  nav.classList.toggle('show');\n});\n\n// Simple contact form handler (no backend). This will open the user's email client with the message summary and show a friendly note.\nconst contactForm = document.getElementById('contactForm');\nconst formNote = document.getElementById('formNote');\nif (contactForm) {\n  contactForm.addEventListener('submit', (e) => {\n    e.preventDefault();\n    const name = document.getElementById('name').value.trim();\n    const email = document.getElementById('email').value.trim();\n    const message = document.getElementById('message').value.trim();\n\n    if (!name || !email || !message) {\n      formNote.textContent = 'Please fill all fields.';\n      return;\n    }\n\n    // create mailto link to open email client (also a fallback if you don't have a backend)\n    const subject = encodeURIComponent(`Website inquiry from ${name}`);\n    const body = encodeURIComponent(`Name: ${name}%0AEmail: ${email}%0A%0A${message}`);\n    window.location.href = `mailto:info@inamrealestate.pk?subject=${subject}&body=${body}`;\n\n    formNote.textContent = 'Opening your email client — please send to complete the inquiry.';\n    contactForm.reset();\n  });\n}\n\n// Optional: track WhatsApp CTA clicks for simple analytics (client-side only)\nconst waButtons = document.querySelectorAll('a[href*="wa.me"]');\nwaButtons.forEach(btn => {\n  btn.addEventListener('click', () => {\n    try {\n      // This is a placeholder where you could integrate Google Analytics event if added later.\n      console.log('WhatsApp CTA clicked');\n    } catch (e) {\n      // silently fail\n    }\n  });\n});\n
