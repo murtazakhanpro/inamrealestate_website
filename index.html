@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inam Real Estate — Premium Property Consultants</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Modern Property Cards Grid Styling */
+        .facebook-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 35px;
+            justify-items: center;
+            padding: 20px 0;
+        }
+
+        .fb-post-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .fb-post-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .fb-post-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(15, 43, 77, 0.15);
+            border-color: var(--secondary);
+        }
+
+        .fb-post-card:hover::before {
+            opacity: 1;
+        }
+
+        .property-features {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+            padding: 15px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .property-features span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .property-features i {
+            color: var(--secondary);
+            font-size: 14px;
+        }
+
+        .property-desc {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+
+        .property-contact {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .contact-btn {
+            flex: 1;
+            background: var(--whatsapp);
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 13px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .contact-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced properties section background */
+        .properties {
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+            position: relative;
+        }
+
+        .properties::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--secondary) 50%, transparent 100%);
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fb-post-card {
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .fb-post-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .fb-post-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html">
+                <img src="images/logotransparent.png" alt="Inam Real Estate Logo" />
+                <span>Inam Real Estate</span>
+            </a>
+            <nav class="nav" id="nav" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <a class="whatsapp-btn" href="https://wa.me/923009263626">WhatsApp</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Section with Image Slider -->
+    <section class="hero-slider">
+        <div class="slider-container">
+            <div class="slide active">
+                <img src="images/exterior.jpg" alt="Premium Real Estate Property">
+                <div class="slide-overlay">
+                    <div class="hero-content">
+                        <h1>Connecting You to Real Estate Opportunities</h1>
+                        <p>Commercial & Corporate property services on Shahrah-e-Faisal, Karachi — trusted since 1998.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="https://wa.me/923009263626" class="btn primary">Contact on WhatsApp</a>
+                            <a href="#properties" class="btn secondary">View Properties</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/slied1.jpg" alt="Luxury Real Estate">
+                <div class="slide-overlay">
+                    <div class="hero-content">
+                        <h1>Your Trusted Real Estate Partner</h1>
+                        <p>Deep knowledge of Karachi commercial corridors, especially Shahrah-e-Faisal.</p>
+                        <div class="hero-buttons">
+                            <a href="https://wa.me/923009263626" class="btn primary">Contact on WhatsApp</a>
+                            <a href="#properties" class="btn secondary">View Properties</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/slide2.jpg" alt="Modern Real Estate">
+                <div class="slide-overlay">
+                    <div class="hero-content">
+                        <h1>Premium Property Solutions</h1>
+                        <p>We serve retailers, franchises and corporate tenants with professional agreements.</p>
+                        <div class="hero-buttons">
+                            <a href="https://wa.me/923009263626" class="btn primary">Contact on WhatsApp</a>
+                            <a href="#properties" class="btn secondary">View Properties</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn prev" onclick="changeSlide(-1)">❮</button>
+        <button class="slider-btn next" onclick="changeSlide(1)">❯</button>
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="properties" id="properties">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Properties</h2>
+                <p>Latest premium property listings.</p>
+            </div>
+            <div class="facebook-posts-grid">
+                <!-- Property Card 1 -->
+                <div class="fb-post-card">
+                    <div class="property-img">
+                        <img src="properties listing images/appartment1.png" alt="3 Bed DD Apartment">
+                        <span class="property-tag">New Listing 🚨</span>
+                    </div>
+                    <div class="property-info">
+                        <h3 class="property-title">3 Bed DD on Main Shahrah-e-Faisal</h3>
+                        <div class="property-price">PKR 150 Lac</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Main Shahrah-e-Faisal, Karachi
+                        </div>
+                        <div class="property-features">
+                            <span><i class="fas fa-ruler-combined"></i> 1250 sq ft</span>
+                            <span><i class="fas fa-car"></i> 3 Parking</span>
+                            <span><i class="fas fa-building"></i> Lift & Mosque</span>
+                        </div>
+                        <p class="property-desc">Front-facing location, perfect for investment or self-living. Units
+                            here sell fast!</p>
+                        <div class="property-contact">
+                            <a href="tel:03041186067" class="contact-btn">
+                                <i class="fas fa-phone"></i> Murtaza Ali
+                            </a>
+                            <a href="tel:03362081312" class="contact-btn">
+                                <i class="fas fa-phone"></i> Adnan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 2 -->
+                <div class="fb-post-card">
+                    <div class="property-img">
+                        <img src="properties listing images/office1.png" alt="Office for Rent">
+                        <span class="property-tag">For Rent 🏢</span>
+                    </div>
+                    <div class="property-info">
+                        <h3 class="property-title">Office Space - Shahrah-e-Faisal</h3>
+                        <div class="property-price">PKR 65,000/month</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Near Baloch Flyover, Shahrah-e-Faisal
+                        </div>
+                        <div class="property-features">
+                            <span><i class="fas fa-ruler-combined"></i> 800 sq ft</span>
+                            <span><i class="fas fa-briefcase"></i> Commercial</span>
+                            <span><i class="fas fa-check-circle"></i> Ready to Move</span>
+                        </div>
+                        <p class="property-desc">Prime location office space, ideal for businesses looking for a
+                            prestigious address.</p>
+                        <div class="property-contact">
+                            <a href="tel:03332124631" class="contact-btn">
+                                <i class="fas fa-phone"></i> Mr. Inam Khan
+                            </a>
+                            <a href="tel:03362081312" class="contact-btn">
+                                <i class="fas fa-phone"></i> Mr. Adnan Khan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>We deliver excellence in every transaction.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-city"></i>
+                    <h3>Market Expertise</h3>
+                    <p>Deep knowledge of Karachi's prime commercial corridors.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Trusted Partners</h3>
+                    <p>Serving top retailers and corporate clients for decades.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Execution</h3>
+                    <p>Efficient processing to save your valuable time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet the Leaders</h2>
+                <p>The visionaries behind Inam Real Estate.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="images/ceo.JPG" alt="CEO">
+                    </div>
+                    <div class="team-info">
+                        <h3>Mr. Inamullah Khan</h3>
+                        <span class="team-role">CEO & Founder</span>
+                        <p>With over 25 years of experience, Mr. Inam has shaped the commercial real estate landscape of
+                            Karachi.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="images/adnantest1.jpg" alt="Co-Founder">
+                    </div>
+                    <div class="team-info">
+                        <h3>Mr.Adnan</h3>
+                        <span class="team-role">Co-Founder</span>
+                        <p>Driving innovation and strategic partnerships to deliver exceptional value to our corporate
+                            clients.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facebook Section -->
+    <section class="facebook-section" id="facebook-feed">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest Updates</h2>
+                <p>Follow us on Facebook for real-time news.</p>
+            </div>
+            <div class="fb-container">
+                <div class="fb-page" data-href="https://www.facebook.com/inamrealestate" data-tabs="timeline"
+                    data-width="500" data-height="600" data-small-header="false" data-adapt-container-width="true"
+                    data-hide-cover="false" data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/inamrealestate" class="fb-xfbml-parse-ignore">
+                        <a href="https://www.facebook.com/inamrealestate">Inam Real Estate</a>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Inam Real Estate</h4>
+                    <p>Your trusted partner for commercial and corporate real estate in Karachi.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="#properties">Properties</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="admin.html">Admin Login</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <p>Shahrah-e-Faisal, Karachi</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/inamrealestate" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/923009263626" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Inam Real Estate. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

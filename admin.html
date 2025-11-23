@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Inam Real Estate</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Admin-specific styles */
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .admin-wrapper {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Login/Signup Container */
+        .auth-container {
+            max-width: 450px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .auth-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a4d7a 100%);
+            color: var(--white);
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .auth-header i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .auth-header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .auth-header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: 0.3s;
+            border: none;
+            background: transparent;
+        }
+
+        .auth-tab.active {
+            color: var(--primary);
+            background: var(--white);
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .auth-body {
+            padding: 40px 30px;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(15, 43, 77, 0.1);
+        }
+
+        .btn-auth {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-auth:hover {
+            background: #1a4d7a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(15, 43, 77, 0.3);
+        }
+
+        .auth-note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* Dashboard Container */
+        .dashboard-container {
+            display: none;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .dashboard-container.active {
+            display: block;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a4d7a 100%);
+            color: var(--white);
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dashboard-header h1 {
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .dashboard-header i {
+            font-size: 32px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .btn-logout {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-logout:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .dashboard-body {
+            padding: 40px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .dashboard-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+        }
+
+        .dashboard-section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dashboard-section h2 i {
+            font-size: 24px;
+            color: var(--secondary);
+        }
+
+        .property-list {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .admin-property-item {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+
+        .admin-property-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .admin-property-info h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .admin-property-info p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: var(--white);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-delete:hover {
+            background: #c82333;
+            transform: scale(1.05);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+        }
+
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.3;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--secondary);
+            gap: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-wrapper">
+        <!-- Authentication Container -->
+        <div class="auth-container" id="authContainer">
+            <div class="auth-header">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Admin Panel</h1>
+                <p>Inam Real Estate Property Management</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="switchTab('login')">Login</button>
+                <button class="auth-tab" onclick="switchTab('signup')">Create Account</button>
+            </div>
+
+            <div class="auth-body">
+                <!-- Login Form -->
+                <form class="auth-form active" id="loginForm">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Username</label>
+                        <input type="text" id="loginUsername" required placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="loginPassword" required placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="btn-auth">
+                        <i class="fas fa-sign-in-alt"></i> Login to Dashboard
+                    </button>
+                    <p class="auth-note">Don't have an account? Switch to Create Account tab.</p>
+                </form>
+
+                <!-- Signup Form -->
+                <form class="auth-form" id="signupForm">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Username</label>
+                        <input type="text" id="signupUsername" required placeholder="Choose a username">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="signupEmail" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="signupPassword" required placeholder="Choose a strong password">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-lock"></i> Confirm Password</label>
+                        <input type="password" id="signupConfirmPassword" required placeholder="Confirm your password">
+                    </div>
+                    <button type="submit" class="btn-auth">
+                        <i class="fas fa-user-plus"></i> Create Admin Account
+                    </button>
+                    <p class="auth-note">Already have an account? Switch to Login tab.</p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard Container -->
+        <div class="dashboard-container" id="dashboardContainer">
+            <div class="dashboard-header">
+                <h1>
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Admin Dashboard</span>
+                </h1>
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <div style="font-weight: 600;" id="currentUsername">Admin</div>
+                        <div style="font-size: 13px; opacity: 0.8;">Administrator</div>
+                    </div>
+                    <button class="btn-logout" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+
+            <div class="dashboard-body">
+                <div class="dashboard-grid">
+                    <!-- Add Property Section -->
+                    <div class="dashboard-section">
+                        <h2><i class="fas fa-plus-circle"></i> Add New Property</h2>
+                        <form id="addPropertyForm">
+                            <div class="form-group">
+                                <label>Property Title</label>
+                                <input type="text" id="title" required placeholder="e.g. Luxury Office in Clifton">
+                            </div>
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input type="text" id="price" required placeholder="e.g. PKR 5.5 Crore">
+                            </div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input type="text" id="location" required placeholder="e.g. Shahrah-e-Faisal, Karachi">
+                            </div>
+                            <button type="submit" class="btn-auth">
+                                <i class="fas fa-plus"></i> Add Property
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Manage Properties Section -->
+                    <div class="dashboard-section">
+                        <h2><i class="fas fa-list"></i> Manage Properties</h2>
+                        <div class="property-list" id="adminPropertyList">
+                            <!-- Properties will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Website
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Admin Authentication System
+        const AUTH_KEY = 'inamAdminAuth';
+        const USERS_KEY = 'inamAdminUsers';
+
+        // Initialize admin users storage
+        function getAdminUsers() {
+            const users = localStorage.getItem(USERS_KEY);
+            return users ? JSON.parse(users) : [];
+        }
+
+        function saveAdminUsers(users) {
+            localStorage.setItem(USERS_KEY, JSON.stringify(users));
+        }
+
+        // Check if user is logged in
+        function checkAuth() {
+            const auth = localStorage.getItem(AUTH_KEY);
+            if (auth) {
+                const authData = JSON.parse(auth);
+                showDashboard(authData.username);
+            }
+        }
+
+        // Switch between login and signup tabs
+        function switchTab(tab) {
+            const tabs = document.querySelectorAll('.auth-tab');
+            const forms = document.querySelectorAll('.auth-form');
+
+            tabs.forEach(t => t.classList.remove('active'));
+            forms.forEach(f => f.classList.remove('active'));
+
+            if (tab === 'login') {
+                tabs[0].classList.add('active');
+                forms[0].classList.add('active');
+            } else {
+                tabs[1].classList.add('active');
+                forms[1].classList.add('active');
+            }
+        }
+
+        // Handle Login
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const users = getAdminUsers();
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                localStorage.setItem(AUTH_KEY, JSON.stringify({ username: user.username }));
+                showDashboard(user.username);
+            } else {
+                alert('Invalid username or password!');
+            }
+        });
+
+        // Handle Signup
+        document.getElementById('signupForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('signupUsername').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            const users = getAdminUsers();
+
+            // Check if username already exists
+            if (users.find(u => u.username === username)) {
+                alert('Username already exists!');
+                return;
+            }
+
+            // Create new user
+            users.push({ username, email, password });
+            saveAdminUsers(users);
+
+            alert('Account created successfully! You can now login.');
+            switchTab('login');
+            document.getElementById('signupForm').reset();
+        });
+
+        // Show Dashboard
+        function showDashboard(username) {
+            document.getElementById('authContainer').style.display = 'none';
+            document.getElementById('dashboardContainer').classList.add('active');
+            document.getElementById('currentUsername').textContent = username;
+            renderAdminProperties();
+        }
+
+        // Logout
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem(AUTH_KEY);
+                location.reload();
+            }
+        }
+
+        // Property Management (from script.js)
+        function getProperties() {
+            const stored = localStorage.getItem("inamProperties");
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        // Render Admin Properties
+        function renderAdminProperties() {
+            const props = getProperties();
+            const container = document.getElementById('adminPropertyList');
+
+            if (props.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-home"></i>
+                        <p>No properties found. Add your first property!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = props.map(prop => `
+                <div class="admin-property-item">
+                    <div class="admin-property-info">
+                        <h4>${prop.title}</h4>
+                        <p>${prop.price} • ${prop.location}</p>
+                    </div>
+                    <button class="btn-delete" onclick="deleteProperty(${prop.id})">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Add Property
+        document.getElementById('addPropertyForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const newProp = {
+                id: Date.now(),
+                title: document.getElementById("title").value,
+                price: document.getElementById("price").value,
+                location: document.getElementById("location").value,
+                tag: "New Listing",
+                type: "Custom",
+                size: "N/A"
+            };
+
+            const props = getProperties();
+            props.unshift(newProp);
+            localStorage.setItem("inamProperties", JSON.stringify(props));
+
+            alert("Property Added Successfully!");
+            document.getElementById('addPropertyForm').reset();
+            renderAdminProperties();
+        });
+
+        // Delete Property
+        function deleteProperty(id) {
+            if (confirm("Are you sure you want to delete this property?")) {
+                const props = getProperties();
+                const updatedProps = props.filter(p => p.id !== id);
+                localStorage.setItem("inamProperties", JSON.stringify(updatedProps));
+                renderAdminProperties();
+            }
+        }
+
+        // Check authentication on page load
+        checkAuth();
+    </script>
+</body>
+
+</html>
