@@ -1,5 +1,0 @@
-/* #b8860b;  Gold Accent */
-
-
-location: 
-https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.300155833485!2d67.06066671547524!3d24.86023393445714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33ea563eabd8b%3A0x852aeee55bb76880!2sInam+Real+Estate!5e0!3m2!1sen!2spk!4v1700000000000!5m2!1sen!2spk
